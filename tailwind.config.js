@@ -11,7 +11,8 @@
 module.exports = {
   content: [
     "./index.html", 
-    "./src/**/*.{js,ts,jsx,tsx}"
+    "./src/**/*.{js,ts,jsx,tsx}",
+    'node_modules/preline/dist/*.js',
   ],
   theme: {
     extend: {
@@ -22,7 +23,12 @@ module.exports = {
         'instagram-start': '#f58529',
         'instagram-end': '#dd2a7b',
       },
+      backgroundImage: {
+        'bannerOne': "url('/src/assets/bannerOne.jpg')"
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    require('preline/plugin'),
+  ],
 };

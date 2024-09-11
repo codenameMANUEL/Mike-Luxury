@@ -8,8 +8,6 @@ import {
   Instagram,
 } from "lucide-react";
 import LOGO from "../assets/logo.png";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faWhatsapp } from '@awesome.me/kit-KIT_CODE/icons/classic/solid'
 
 export default function NavBar() {
   const [isTabOpen, setIsTabOpen] = useState(false);
@@ -19,9 +17,6 @@ export default function NavBar() {
   const toggleTab = () => setIsTabOpen(!isTabOpen);
   const links = ["Home", "Shop", "Marketplace", "Company"];
 
-  const tester = () => {
-    console.log("clicked");
-  };
 
   return (
     <nav className="relative bg-white shadow-sm w-full">
@@ -36,7 +31,7 @@ export default function NavBar() {
           <img alt="Logo" src={LOGO} className="h-10 w-auto" />
         </div>
         <div className="flex flex-1 justify-end space-x-4">
-          <ShoppingBag className="h-6 w-6 text-stone-800" onClick={tester} />
+          <ShoppingBag className="h-6 w-6 text-stone-800" />
           <span className="border-solid bg-red-500 px-[.5rem] rounded-[2rem] absolute top-3 right-3 text-[.7rem] w-[1rem] flex items-center justify-center text-white">
             7
           </span>
@@ -53,7 +48,7 @@ export default function NavBar() {
       <div
         className={`fixed inset-y-0 left-0 bg-white shadow-lg transform z-50 ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out w-6/12`}
+        } transition-transform duration-700 ease-in-out w-3/4`}
       >
         <div className="flex items-center justify-between p-4">
           <span className="text-lg font-semibold"></span>
@@ -77,20 +72,13 @@ export default function NavBar() {
           <div className="">
             <div className="flex space-x-4 pl-4 absolute inset-x-0 bottom-5 border-t pt-4 border-gray-300">
               <span className="inline-block p-2 bg-sky-500 rounded-full hover:bg-sky-700 cursor-pointer">
-                <Facebook strokeWidth={1} className="text-white" />
+                <Facebook strokeWidth={2} className="text-white" />
               </span>
               <span className="inline-block p-2 bg-gradient-to-r from-instagram-start to-instagram-end rounded-full hover:opacity-80 cursor-pointer">
                 <Instagram
-                  strokeWidth={1}
+                  strokeWidth={2}
                   className="text-gray-800 cursor-pointer"
                 />
-              </span>
-              <span>
-                <Facebook
-                  strokeWidth={1}
-                  className="text-gray-800 cursor-pointer"
-                />
-                {/* <FontAwesomeIcon icon={faWhatsapp} /> */}
               </span>
             </div>
           </div>
@@ -99,7 +87,7 @@ export default function NavBar() {
 
       <div className="hidden md:flex lg:hidden items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-1 justify-start">
-          <AlignLeft className="h-6 w-6 text-stone-800" onClick={toggleTab} />
+          <AlignLeft className="h-6 w-6 text-stone-800 cursor-pointer" onClick={toggleTab} />
         </div>
         <div className="flex flex-1 justify-center">
           <img alt="Logo" src={LOGO} className="h-12 w-auto" />
@@ -113,10 +101,17 @@ export default function NavBar() {
         </div>
       </div>
 
+      {isTabOpen && (
+        <div
+          className="fixed inset-0 bg-black opacity-50 z-40"
+          onClick={toggleTab}
+        />
+      )}
+
       <div
         className={`fixed inset-y-0 left-0 bg-white shadow-lg transform z-50 ${
           isTabOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out w-9/12`}
+        } transition-transform duration-300 ease-in-out w-7/12`}
       >
         <div className="flex items-center justify-between p-4">
           <span className="text-lg font-semibold"></span>
@@ -151,6 +146,19 @@ export default function NavBar() {
             <button className="rounded bg-gray-300 flex items-center justify-center w-32 h-10 gap-2 hover:bg-black hover:text-white">
               <UserRound className="" /> Login
             </button>
+          </div>
+          <div className="">
+            <div className="flex space-x-4 pl-4 absolute inset-x-0 bottom-5 border-t pt-4 border-gray-300">
+              <span className="inline-block p-2 bg-sky-500 rounded-full hover:bg-sky-700 cursor-pointer">
+                <Facebook strokeWidth={2} className="text-white" />
+              </span>
+              <span className="inline-block p-2 bg-gradient-to-r from-instagram-start to-instagram-end rounded-full hover:opacity-80 cursor-pointer">
+                <Instagram
+                  strokeWidth={2}
+                  className="text-gray-800 cursor-pointer"
+                />
+              </span>
+            </div>
           </div>
         </div>
       </div>
